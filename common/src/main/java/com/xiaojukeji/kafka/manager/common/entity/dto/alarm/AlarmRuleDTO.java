@@ -47,6 +47,16 @@ public class AlarmRuleDTO {
      */
     private Long gmtModify;
 
+    private String mailbox;
+
+    public String getMailbox() {
+        return mailbox;
+    }
+
+    public void setMailbox(String mailbox) {
+        this.mailbox = mailbox;
+    }
+
     public Long getId() {
         return id;
     }
@@ -116,6 +126,7 @@ public class AlarmRuleDTO {
         return "AlarmRuleDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", mailbox='" + mailbox + '\'' +
                 ", duration=" + duration +
                 ", clusterId=" + clusterId +
                 ", strategyExpression=" + strategyExpression +

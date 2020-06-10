@@ -1,13 +1,13 @@
 package com.xiaojukeji.kafka.manager.web.converters;
 
 import com.alibaba.fastjson.JSON;
-import com.xiaojukeji.kafka.manager.web.model.alarm.AlarmRuleModel;
-import com.xiaojukeji.kafka.manager.web.vo.alarm.AlarmRuleVO;
-import com.xiaojukeji.kafka.manager.common.entity.po.AlarmRuleDO;
-import com.xiaojukeji.kafka.manager.service.utils.ListUtils;
 import com.xiaojukeji.kafka.manager.common.entity.dto.alarm.AlarmStrategyActionDTO;
 import com.xiaojukeji.kafka.manager.common.entity.dto.alarm.AlarmStrategyExpressionDTO;
 import com.xiaojukeji.kafka.manager.common.entity.dto.alarm.AlarmStrategyFilterDTO;
+import com.xiaojukeji.kafka.manager.common.entity.po.AlarmRuleDO;
+import com.xiaojukeji.kafka.manager.service.utils.ListUtils;
+import com.xiaojukeji.kafka.manager.web.model.alarm.AlarmRuleModel;
+import com.xiaojukeji.kafka.manager.web.vo.alarm.AlarmRuleVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,7 @@ public class AlarmConverter {
         AlarmRuleDO alarmRuleDO = new AlarmRuleDO();
         alarmRuleDO.setId(alarmRuleModel.getId());
         alarmRuleDO.setAlarmName(alarmRuleModel.getAlarmName());
+        alarmRuleDO.setMailbox(alarmRuleModel.getMailbox());
         alarmRuleDO.setStrategyExpressions(JSON.toJSONString(alarmRuleModel.getStrategyExpressionList()));
         alarmRuleDO.setStrategyFilters(JSON.toJSONString(alarmRuleModel.getStrategyFilterList()));
         alarmRuleDO.setStrategyActions(JSON.toJSONString(alarmRuleModel.getStrategyActionList()));
@@ -51,6 +52,7 @@ public class AlarmConverter {
         }
         alarmRuleVO.setId(alarmRuleDO.getId());
         alarmRuleVO.setAlarmName(alarmRuleDO.getAlarmName());
+        alarmRuleVO.setMailbox(alarmRuleDO.getMailbox());
         alarmRuleVO.setPrincipalList(ListUtils.string2StrList(alarmRuleDO.getPrincipals()));
         alarmRuleVO.setStatus(alarmRuleDO.getStatus());
         alarmRuleVO.setGmtCreate(alarmRuleDO.getGmtCreate().getTime());

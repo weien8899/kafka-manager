@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 监控告警规则管理
@@ -99,6 +99,7 @@ public class AlarmRuleManager {
 
         AlarmRuleDTO alarmRuleDTO = new AlarmRuleDTO();
         alarmRuleDTO.setId(alarmRuleDO.getId());
+        alarmRuleDTO.setMailbox(alarmRuleDO.getMailbox());
         alarmRuleDTO.setName(alarmRuleDO.getAlarmName());
         alarmRuleDTO.setDuration(0);
         alarmRuleDTO.setClusterId(null);

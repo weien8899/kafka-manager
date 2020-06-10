@@ -12,14 +12,15 @@
     <result column="strategy_filters" jdbcType="VARCHAR" property="strategyFilters" />
     <result column="strategy_actions" jdbcType="VARCHAR" property="strategyActions" />
     <result column="principals" jdbcType="VARCHAR" property="principals" />
+    <result column="mailbox" jdbcType="VARCHAR" property="mailbox" />
   </resultMap>
 
   <insert id="insert" parameterType="com.xiaojukeji.kafka.manager.common.entity.po.AlarmRuleDO">
     <![CDATA[
       INSERT INTO alarm_rule
-        (alarm_name, strategy_expressions, strategy_filters, strategy_actions, principals)
+        (alarm_name, strategy_expressions, strategy_filters, strategy_actions, principals,mailbox)
       VALUES (
-        #{alarmName}, #{strategyExpressions}, #{strategyFilters}, #{strategyActions}, #{principals})
+        #{alarmName}, #{strategyExpressions}, #{strategyFilters}, #{strategyActions}, #{principals},#{mailbox})
     ]]>
   </insert>
 
@@ -37,7 +38,8 @@
       strategy_filters=#{strategyFilters},
       strategy_actions=#{strategyActions},
       principals=#{principals},
-      status=#{status}
+      status=#{status},
+      mailbox=#{mailbox}
     WHERE id = #{id}
     ]]>
   </update>

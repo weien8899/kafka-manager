@@ -1,9 +1,9 @@
 package com.xiaojukeji.kafka.manager.web.model.alarm;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.xiaojukeji.kafka.manager.common.entity.dto.alarm.AlarmStrategyActionDTO;
 import com.xiaojukeji.kafka.manager.common.entity.dto.alarm.AlarmStrategyExpressionDTO;
 import com.xiaojukeji.kafka.manager.common.entity.dto.alarm.AlarmStrategyFilterDTO;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang.StringUtils;
@@ -37,6 +37,17 @@ public class AlarmRuleModel {
 
     @ApiModelProperty(value = "告警状态, 0:暂停, 1:启用")
     private Integer status;
+
+    @ApiModelProperty(value = "告警邮箱")
+    private String mailbox;
+
+    public String getMailbox() {
+        return mailbox;
+    }
+
+    public void setMailbox(String mailbox) {
+        this.mailbox = mailbox;
+    }
 
     public Long getId() {
         return id;

@@ -11,6 +11,17 @@ public class AlarmRuleDO extends BaseDO {
 
     private String principals;
 
+
+    private String mailbox;
+
+    public String getMailbox() {
+        return mailbox;
+    }
+
+    public void setMailbox(String mailbox) {
+        this.mailbox = mailbox;
+    }
+
     public String getAlarmName() {
         return alarmName;
     }
@@ -59,6 +70,7 @@ public class AlarmRuleDO extends BaseDO {
                 ", strategyFilters='" + strategyFilters + '\'' +
                 ", strategyActions='" + strategyActions + '\'' +
                 ", principals='" + principals + '\'' +
+                ", mailbox='" + principals + '\'' +
                 ", id=" + id +
                 ", status=" + status +
                 ", gmtCreate=" + gmtCreate +

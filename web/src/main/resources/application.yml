@@ -11,9 +11,9 @@ spring:
     name: kafkamanager
   datasource:
     kafka-manager:
-      jdbc-url: jdbc:mysql://localhost:3306/kafka_manager?characterEncoding=UTF-8&serverTimezone=GMT%2B8
-      username: admin
-      password: admin
+      jdbc-url: jdbc:mysql://w112:3306/kafka_manager?characterEncoding=UTF-8&serverTimezone=GMT%2B8
+      username: root
+      password: RQx]an09pq
       driver-class-name: org.mariadb.jdbc.Driver
   main:
     allow-bean-definition-overriding: true
@@ -28,5 +28,12 @@ logging:
 kafka-monitor:
   enabled: true
   notify-kafka:
-    cluster-id: 95
+    cluster-id: 1
     topic-name: kmo_monitor
+
+# mail 服务器
+mail-smtp:
+  host: smtp.qq.com
+  username: 1711137865@qq.com
+  password: emmftozrgdxwbbac
+  port: 465

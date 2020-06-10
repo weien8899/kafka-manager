@@ -143,6 +143,7 @@ export interface IAlarmBase {
   strategyActionList: IActionList[];
   principalList: string[];
   status: number;
+  mailbox:string;
 }
 
 export interface IExpressionList {

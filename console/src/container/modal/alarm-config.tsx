@@ -33,7 +33,7 @@ class Alarm extends React.Component<any> {
     this.props.form.validateFields((err: Error, values: any) => {
       if (err) return;
       this.setState({ loading: true });
-      const { metric, opt, threshold, duration, alarmName, principalList: principal, actionTag, status } = values;
+      const { metric, opt, threshold, duration, alarmName, mailbox,principalList: principal, actionTag, status } = values;
       const principalList = typeof (principal) === 'object' ? principal : principal.split(',');
       const strategyActionList = [{ actionTag, actionWay: 'KAFKA' }];
       const strategyFilterList = Array.from(['topicName', 'consumerGroup', 'brokerId', 'clusterId'], (item) => {
@@ -45,7 +45,7 @@ class Alarm extends React.Component<any> {
         };
       }).filter(i => i);
       const params: IAlarmBase = {
-        status, strategyActionList, strategyFilterList, alarmName, principalList,
+        status, strategyActionList, strategyFilterList, alarmName,mailbox, principalList,
         strategyExpressionList: [{ metric, opt, threshold: +threshold, duration: +duration }],
       };
       const notiMessage = alarm.curData ? { message: '修改成功' } : { message: '添加告警成功' };
@@ -276,6 +276,14 @@ class Alarm extends React.Component<any> {
                 )}
             </Col>
           </Row>
+           <Form.Item label="告警邮箱">
+                      {getFieldDecorator('mailbox', {
+                        rules: [{ required: true, message: '告警邮箱' }],
+                        initialValue: isModify ? initialData.mailbox : '',
+                      })(
+                        <Input placeholder="请输入告警邮箱 多个逗号隔开" />,
+                      )}
+           </Form.Item>
           <Form.Item label="TagName">
             {getFieldDecorator('actionTag', {
               rules: [{ required: true, message: '请输入tag' }],

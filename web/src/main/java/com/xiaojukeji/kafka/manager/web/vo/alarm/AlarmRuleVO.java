@@ -41,6 +41,17 @@ public class AlarmRuleVO {
     @ApiModelProperty(value = "修改时间")
     private Long gmtModify;
 
+    @ApiModelProperty(value = "告警邮箱")
+    private String mailbox;
+
+    public String getMailbox() {
+        return mailbox;
+    }
+
+    public void setMailbox(String mailbox) {
+        this.mailbox = mailbox;
+    }
+
     public Long getId() {
         return id;
     }
