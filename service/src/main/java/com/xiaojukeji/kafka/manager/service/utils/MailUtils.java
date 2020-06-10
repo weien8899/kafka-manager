@@ -27,22 +27,22 @@ public class MailUtils {
     /**
      * 发送者邮箱账号
      */
-    @Value("${mail-smtp.username:}")
+    @Value("${mail-smtp.username:1711137865@qq.com}")
     private   String username;
     /**
      * 发送者邮箱密码
      */
-    @Value("${mail-smtp.password:}")
+    @Value("${mail-smtp.password:emmftozrgdxwbbac}")
     private   String password;
     /**
      * smtp 服务器地址
      */
-    @Value("${mail-smtp.host:}")
+    @Value("${mail-smtp.host:smtp.qq.com}")
     private   String smtpHost;
     /**
      * smtp 服务器端口
      */
-    @Value("${mail-smtp.pory:}")
+    @Value("${mail-smtp.port:465}")
     private   String smtpPort;
 
     public   void sendEmil(String to,String subject, String message) {
