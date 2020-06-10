@@ -41,22 +41,22 @@ public class AlarmNotifyService {
      * 发送者邮箱账号
      */
     @Value("${mail-smtp.username:}")
-    private static  String username;
+    private   String username;
     /**
      * 发送者邮箱密码
      */
     @Value("${mail-smtp.password:}")
-    private static  String password;
+    private   String password;
     /**
      * smtp 服务器地址
      */
     @Value("${mail-smtp.host:}")
-    private static  String smtpHost;
+    private   String smtpHost;
     /**
      * smtp 服务器端口
      */
-    @Value("${mail-smtp.pory:}")
-    private static  String smtpPort;
+    @Value("${mail-smtp.port:}")
+    private   String smtpPort;
 
     public void send(AlarmRuleDTO alarmRuleDTO) {
         if (clusterId == null || StringUtils.isEmpty(topicName)) {
@@ -67,6 +67,7 @@ public class AlarmNotifyService {
         String messages= JSON.toJSONString(convert2AlarmNotifyDTO(alarmRuleDTO));
         kafkaNotifier.produce(clusterId, topicName, messages);
 
+        AlarmNotifyService alarmNotifyService=new AlarmNotifyService();
         String message = AlarmNotifyService.builder().addHeader("你好:", 2)
                 .newLine()
                 .addMessage("&nbsp;&nbsp;&nbsp;&nbsp请关注预警信息: ")
@@ -76,7 +77,7 @@ public class AlarmNotifyService {
                 .addMessage("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp告警规则： ").addMessage(JSON.toJSONString(alarmRuleDTO.getStrategyExpression())).newLine()
                 .addMessage("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp过滤规则： ").addMessage(JSON.toJSONString(alarmRuleDTO.getStrategyFilterMap()))
                 .build();
-        AlarmNotifyService.sendEmil(alarmRuleDTO.getMailbox().replaceAll("，",","),"梧桐车联智能商业系统预警",message);
+        alarmNotifyService.sendEmil(alarmRuleDTO.getMailbox().replaceAll("，",","),"梧桐车联智能商业系统预警",message);
 
     }
 
@@ -91,7 +92,7 @@ public class AlarmNotifyService {
         return alarmNotifyDTO;
     }
 
-    public  static void sendEmil(String to,String subject, String message) {
+    public   void sendEmil(String to,String subject, String message) {
         try {
 
             //启用ssl
