@@ -24,40 +24,28 @@ import java.util.Properties;
 @Component
 public class MailUtils {
 
-    public static void main(String[] args) {
-        String message = MailUtils.builder().addHeader("你好:", 2)
-                .newLine()
-                .addMessage("&nbsp;&nbsp;&nbsp;&nbsp请关注预警信息: ")
-                .newLine()
-                .addMessage("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp告警名称： ").addMessage("alarmRuleDTO.getName()").newLine()
-                .addMessage("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp告警规则： ").addMessage("alarmRuleDTO.getStrategyExpression().toString()").newLine()
-                .addMessage("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp过滤规则： ").addMessage("JSON.toJSONString(alarmRuleDTO.getStrategyFilterMap())")
-                .build();
-        System.out.println("p_enwei@tencent.com,1711137865@qq.com，1827038227@qq.com".replaceAll("，",","));
-        MailUtils.sendEmil("p_enwei@tencent.com,1711137865@qq.com，1827038227@qq.com".replaceAll("，",","),"梧桐车联智能商业系统初始密码",message);
-    }
     /**
      * 发送者邮箱账号
      */
     @Value("${mail-smtp.username:}")
-    private static  String username;
+    private   String username;
     /**
      * 发送者邮箱密码
      */
     @Value("${mail-smtp.password:}")
-    private static  String password;
+    private   String password;
     /**
      * smtp 服务器地址
      */
     @Value("${mail-smtp.host:}")
-    private static  String smtpHost;
+    private   String smtpHost;
     /**
      * smtp 服务器端口
      */
     @Value("${mail-smtp.pory:}")
-    private static  String smtpPort;
+    private   String smtpPort;
 
-    public  static void sendEmil(String to,String subject, String message) {
+    public   void sendEmil(String to,String subject, String message) {
         try {
 
             //启用ssl
@@ -106,7 +94,7 @@ public class MailUtils {
 
     }
 
-    public static MailMessageBuilder builder(){
+    public  MailMessageBuilder builder(){
         return new MailMessageBuilder();
     }
 
